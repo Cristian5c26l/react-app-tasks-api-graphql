@@ -58,7 +58,13 @@ const REORDER_COLUMNS_MUTATION = `
 
 const DELETE_COLUMN_MUTATION = `
   mutation DeleteColumn($columnId: ID!, $userId: ID!) {
-    deleteColumn(columnId: $columnId, userId: $userId)
+    deleteColumn(columnId: $columnId, userId: $userId) {
+      id
+      title
+      userId
+      isFixed
+      order
+    }
   }
 `;
 

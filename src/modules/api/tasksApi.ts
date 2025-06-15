@@ -17,7 +17,6 @@ export const tasksApi = async (query = "", variables: Variables) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // Puedes agregar aquí un token o header de autenticación si lo necesitas
       },
       body: JSON.stringify({
           query: query,

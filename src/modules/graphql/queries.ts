@@ -10,7 +10,21 @@ const GET_TASKS_BY_STATUS_QUERY = `
   }
 `;
 
+const GET_ALL_COLUMNS_QUERY = `
+  query AllColumns($userId: ID!) {
+    allColumns(userId: $userId) {
+      id
+      title
+      userId
+      isFixed
+      order
+    }
+  }
+`;
+
 export const queries = {
     // getAllTasks: GET_ALL_TASKS_QUERY,
-    getTasksByStatus: GET_TASKS_BY_STATUS_QUERY,
+  getTasksByStatus: GET_TASKS_BY_STATUS_QUERY,
+  getAllColumns: GET_ALL_COLUMNS_QUERY
+
 }

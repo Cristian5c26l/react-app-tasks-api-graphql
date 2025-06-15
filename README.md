@@ -1,4 +1,6 @@
-# Instalacion
+# Instalacion y ejecución
+
+## Desarrollo (Local)
 
 1. Clonar el repositorio:
    ```bash
@@ -31,3 +33,12 @@
     npm run dev
     ```
 6. Abrir el navegador y acceder a `http://localhost:5173` o a la url indicada para ver la aplicación en funcionamiento.
+
+## Producción (Deploy)
+
+1. La variable de entorno `VITE_API_URL` debe apuntar a la URL de tu API backend de la aplicación de Tasks compuesta por Node + Graphql.
+2. Despues, debes construir la aplicación para producción:
+   ```bash
+   npm run build
+   ```
+3. Desplegar los archivos generados en la carpeta `dist` en tu servidor web o servicio de hosting preferido, como Netlify. Subir esa carpeta a Netlify

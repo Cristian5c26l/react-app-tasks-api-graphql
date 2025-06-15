@@ -27,7 +27,8 @@ interface Props {
   deleteTask: (taskId: string, column: TaskStatus) => Promise<void>;
   editTask: (taskId: string, title: string, column: TaskStatus) => Promise<void>;
   deleteColumn: (columnId: string) => Promise<void>; // 
-  isDraggingColumn: boolean; 
+  isDraggingColumn: boolean;
+  // isHappeningChange: boolean;
 }
 
 export const JiraTasks = ({
@@ -44,8 +45,10 @@ export const JiraTasks = ({
   editTask,
   deleteColumn,
   isDraggingColumn,
+  // isHappeningChange, // opcional, si se quiere saber si se esta arrastrando una tarea
 }: Props) => {
   
+  // console.log(isHappeningChange, "isHappeningChange");
 
   const [onDragOver, setOnDragOver] = useState(false); // opcional, si se quiere saber si se esta arrastrando una tarea
 
@@ -119,6 +122,8 @@ export const JiraTasks = ({
     reOrderTasksColumns(order); // Clave
 
     removeDraggingTasksColumn();
+
+    setOnDragOver(false); // Resetea el estado de onDragOver al soltar la columna
   };
 
   const handleDeleteColumn = () => {
@@ -179,7 +184,11 @@ export const JiraTasks = ({
               <b>
                 {(status === "TODO" && "pendientes") ||
                   (status === "IN PROGRESS" && "en progreso") ||
-                  (status === "DONE" && "terminadas")}
+                    (status === "DONE" && "terminadas")
+                    ||
+                    status
+
+                  }
               </b>
             </div>
 
@@ -191,6 +200,10 @@ export const JiraTasks = ({
           </div>
         )}
       </div>
+
+      {/* {isHappeningChange && (
+        <div className="absolute inset-0 z-40 bg-gray-300 bg-opacity-50 pointer-events-auto cursor-not-allowed rounded-[20px]" />
+      )} */}
     </div>
   );
 };
